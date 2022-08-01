@@ -4,10 +4,22 @@ public class RadioUpdate {
     //поля
     private int currentStationNumber;
     private int currentVolume;
+    private int numberOfStations;
+
+    //конструкторы
+    public RadioUpdate() {
+        this.numberOfStations = 10;
+    }
+
+    public RadioUpdate(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+
+    }
+
 
     //переключение радиостанций вперёд
     public void next() {
-        if (currentStationNumber < 9) {
+        if (currentStationNumber < numberOfStations - 1) {
             currentStationNumber++;
         } else {
             currentStationNumber = 0;
@@ -19,13 +31,13 @@ public class RadioUpdate {
         if (currentStationNumber > 0) {
             currentStationNumber--;
         } else {
-            currentStationNumber = 9;
+            currentStationNumber = numberOfStations - 1;
         }
     }
 
     // увеличение звука на 1
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume++;
         }
     }
@@ -51,7 +63,7 @@ public class RadioUpdate {
         if (currentStationNumber < 0) {
             return;
         }
-        if (currentStationNumber > 9) {
+        if (currentStationNumber > numberOfStations - 1) {
             return;
         }
         this.currentStationNumber = currentStationNumber;
@@ -67,7 +79,7 @@ public class RadioUpdate {
         if (currentVolume < 0) {
             return;
         }
-        if (currentVolume > 10) {
+        if (currentVolume > 100) {
             return;
         }
         this.currentVolume = currentVolume;
