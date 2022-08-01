@@ -64,43 +64,43 @@ public class RadioUpdateTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    //увеличение громкости звука, если громкость < 10
+    //увеличение громкости звука, если громкость < 100
     @Test
-    public void shouldIncreaseVolumeIfVolumeLessThan10() {
+    public void shouldIncreaseVolumeIfVolumeLessThan100() {
         RadioUpdate radioUpdate = new RadioUpdate();
-        radioUpdate.setCurrentVolume(9);
+        radioUpdate.setCurrentVolume(80);
 
         radioUpdate.increaseVolume();
 
-        int expected = 10;
+        int expected = 81;
         int actual = radioUpdate.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
 
-    //увеличение громкости звука, если громкость = 10
+    //увеличение громкости звука, если громкость = 100
     @Test
-    public void shouldIncreaseVolumeIfVolumeIs10() {
+    public void shouldIncreaseVolumeIfVolumeIs100() {
         RadioUpdate radioUpdate = new RadioUpdate();
-        radioUpdate.setCurrentVolume(10);
+        radioUpdate.setCurrentVolume(100);
 
         radioUpdate.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radioUpdate.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
 
-    //уменьшение громкости звука, если громкость от 1 до 10
+    //уменьшение громкости звука, если громкость от 1 до 100
     @Test
-    public void shouldDecreaseVolumeIfVolumeFrom1To10() {
+    public void shouldDecreaseVolumeIfVolumeFrom1To100() {
         RadioUpdate radioUpdate = new RadioUpdate();
-        radioUpdate.setCurrentVolume(4);
+        radioUpdate.setCurrentVolume(18);
 
         radioUpdate.decreaseVolume();
 
-        int expected = 3;
+        int expected = 17;
         int actual = radioUpdate.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -134,11 +134,11 @@ public class RadioUpdateTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    //уменьшение громкости звука, если громкость 11
+    //уменьшение громкости звука, если громкость 101
     @Test
-    public void shouldDecreaseVolumeIfVolume11() {
+    public void shouldDecreaseVolumeIfVolume101() {
         RadioUpdate radioUpdate = new RadioUpdate();
-        radioUpdate.setCurrentVolume(11);
+        radioUpdate.setCurrentVolume(101);
 
         radioUpdate.decreaseVolume();
 
@@ -162,15 +162,15 @@ public class RadioUpdateTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    //уменьшение громкости звука, если громкость = 10
+    //уменьшение громкости звука, если громкость = 99
     @Test
-    public void shouldDecreaseVolumeIfVolume10() {
+    public void shouldDecreaseVolumeIfVolume99() {
         RadioUpdate radioUpdate = new RadioUpdate();
-        radioUpdate.setCurrentVolume(10);
+        radioUpdate.setCurrentVolume(99);
 
         radioUpdate.decreaseVolume();
 
-        int expected = 9;
+        int expected = 98;
         int actual = radioUpdate.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -202,6 +202,20 @@ public class RadioUpdateTest {
         int actual = radioUpdate.getCurrentStationNumber();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    //тест для конструктора
+    @Test
+    public void constructorTest() {
+        RadioUpdate radioUpdate = new RadioUpdate(10);
+
+        radioUpdate.setCurrentStationNumber(9);
+
+        int actual = radioUpdate.getCurrentStationNumber();
+        int expected = 9;
+
+        Assertions.assertEquals(expected, actual);
+
     }
 
 }
